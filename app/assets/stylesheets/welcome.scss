@@ -1,0 +1,26 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.frame {
+  border: 1px solid #2f79b9;
+  border-radius: 5px;
+  text-align: center;
+  height: 125px;
+  margin-bottom: 40px;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.offer {
+  text-align: center;
+  height: 130px;
+  justify-content: space-around;
+}
