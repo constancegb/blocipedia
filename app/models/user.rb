@@ -9,4 +9,15 @@ class User < ActiveRecord::Base
 
   has_many :wikis
 
+  before_save { self.email = email.downcase }
+  before_save { self.role ||= :standard }
+
+  # after_initialize :default
+  #
+  # def default
+  #   self.role ||= :standard
+  # end
+
+  enum role: [:standard, :premium, :admin]
+
 end
