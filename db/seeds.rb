@@ -1,6 +1,6 @@
 require 'random_data'
 
- # Create Users
+ # Create Users (will be standard by default)
  10.times do
    User.create!(
      name:     RandomData.random_name,
@@ -9,6 +9,22 @@ require 'random_data'
    )
  end
  users = User.all
+
+ #Create a preium user
+ premium = User.create!(
+   name:     'Premium User',
+   email:    'premium@example.com',
+   password: 'helloworld',
+   role:     'premium'
+ )
+
+ #Create an admin user
+ admin = User.create!(
+   name:     'Admin User',
+   email:    'admin@example.com',
+   password: 'helloworld',
+   role:     'admin'
+ )
 
  # Create Wikis
  55.times do
