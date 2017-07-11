@@ -17,6 +17,14 @@
       <% if current_user %>
         Signed in as: <strong><%= current_user.email %></strong> |
         <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+        <br>
+             <div class="pull-right">
+             <% if current_user.standard? %>
+               <%= link_to "Upgrade to Premium", new_charge_path, :class => 'navbar-link' %>
+             <% elsif current_user.premium? %>
+               <%= link_to "Switch back to Standard", new_downgrade_path, :class => 'navbar-link' %>
+             <% end %>
+           </div>
       <% else %>
         <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %> -
         <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %>

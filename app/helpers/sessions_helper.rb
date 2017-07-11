@@ -9,7 +9,8 @@ module SessionsHelper
    end
 
     def current_user
-      User.find_by(id: session[:user_id]) # current_user is a shortcut to this functionality
+      User.find_by(id: session[:user_id])
+      # current_user is a shortcut to this functionality
     end
 
 

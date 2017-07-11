@@ -1,0 +1,12 @@
+<br><br><br>
+<div class='col-md-offset-1'>
+  <%= form_tag charges_path do %>
+   <% if current_user.standard? %>
+     <h3>Create private wikis<br>Add & remove collaborators</h3><br>
+     <p>You will be charged $15 to upgrade to a Premium account</p>
+     <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
+   <% else %>
+     <br><br><br><h2>You already are a Premium Member!</h2>
+   <% end %>
+  <% end %>
+</div>

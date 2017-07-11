@@ -1,0 +1,7 @@
+<% if current_user.premium? %>
+   <h2>Downgrade to Standard</h2>
+   <p>Please note that  if you downgrade, you will be required to pay $15 to get your premium status back.</p>
+   <%= link_to "Downgrade", downgrade_index_path, method: :create, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to downgrade?'} %>
+ <% else %>
+   <br><br><br><h2>You are already a Standard Member!</h2>
+ <% end %>
