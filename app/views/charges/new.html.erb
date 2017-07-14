@@ -7,6 +7,7 @@
      <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
    <% else %>
      <br><br><br><h2>You already are a Premium Member!</h2>
+     <%= link_to "Downgrade", new_downgrade_path, class: 'btn btn-danger' %>
    <% end %>
   <% end %>
 </div>

@@ -26,7 +26,7 @@ class ChargesController < ApplicationController
    )
 
    flash[:notice] = "Thanks #{current_user.name}, your account was upgraded to premium."
-   current_user.preium!
+   current_user.premium!
    redirect_to wikis_path
 
    # Stripe will send back CardErrors, with friendly messages

@@ -13,7 +13,9 @@
   <div class='col-md-3 col-md-offset-2 offer'>
     <div class:'wrapper'>
       <div class="child"><h4>Create as many public wikis as you want!</h4></div>
-      <div class="icon child"></div>
+      <%= link_to new_downgrade_path do %>
+        <div class="icon child"></div>
+      <% end %>
       <div class="child"><p>Free Plan</p></div>
     </div>
   </div>
@@ -21,7 +23,9 @@
   <div class='col-md-3 col-md-offset-2 offer'>
     <div class:'wrapper'>
       <div class="child"><h4>Create private wikis - Add & remove collaborators</h4></div>
-      <div class="icon child"></div>
+        <%= link_to new_charge_path do %>
+          <div class="icon child"></div>
+        <% end %>
       <div class="child"><p>Premium Plan</p></div>
     </div>
   </div>

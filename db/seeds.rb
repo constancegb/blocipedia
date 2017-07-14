@@ -8,7 +8,7 @@ require 'random_data'
      password: RandomData.random_sentence
    )
  end
- users = User.all
+
 
  #Create a preium user
  premium = User.create!(
@@ -25,6 +25,7 @@ require 'random_data'
    password: 'helloworld',
    role:     'admin'
  )
+ users = User.all
 
  # Create Wikis
  55.times do
