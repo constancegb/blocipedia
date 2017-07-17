@@ -5,9 +5,14 @@ class WikisController < ApplicationController
 
   def index
     if current_user.standard?
-       @wikis = Wiki.where(private: false)
+       @public_wikis = Wiki.where(private: false)
      else
-       @wikis = Wiki.all
+       @public_wikis = Wiki.where(private: false)
+       @private_wikis = Wiki.where(private: true)
+       # Look at incorporating Pundit
+       # @wikis = (wikis.where(private: false)) + (current_user.wikis.where(private: true))
+       # @wikis = Wiki.all
+       # current_user.wikis.all <- all wikis belonging to the logged in user
      end
   end
 
@@ -20,9 +25,10 @@ class WikisController < ApplicationController
   end
 
   def create
-     @wiki = Wiki.new
+     @wiki = current_user.wikis.build
      @wiki.title = params[:wiki][:title]
      @wiki.body = params[:wiki][:body]
+     @wiki.private = params[:wiki][:private]
 
      if @wiki.save
        flash[:notice] = "Wiki was saved."
@@ -41,6 +47,8 @@ class WikisController < ApplicationController
      @wiki = Wiki.find(params[:id])
      @wiki.title = params[:wiki][:title]
      @wiki.body = params[:wiki][:body]
+     @wiki.private = params[:wiki][:private]
+
      if @wiki.save
        flash[:notice] = "Wiki was updated."
        redirect_to @wiki

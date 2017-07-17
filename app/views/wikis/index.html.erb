@@ -6,7 +6,7 @@
   </div><br><br>
 <% end %>
 
- <% @wikis.each do |wiki| %>
+ <% @public_wikis.each do |wiki| %>
  <div class="media col-md-6">
    <div class="media-body">
      <h4 class="media-heading">
@@ -14,4 +14,17 @@
      </h4>
    </div>
  </div>
+ <% end %>
+
+ <br>
+ <% if current_user.premium? || current_user.admin? %>
+   <% @private_wikis.each do |wiki| %>
+     <div class="media col-md-6">
+       <div class="media-body">
+         <h4 class="media-heading">
+           <% if wiki.user_id == current_user.id %> PRIVATE: <%= link_to wiki.title, wiki %><% end %>
+         </h4>
+       </div>
+     </div>
+   <% end %>
  <% end %>
