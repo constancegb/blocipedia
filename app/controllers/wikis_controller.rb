@@ -4,16 +4,16 @@ class WikisController < ApplicationController
   before_action :require_sign_in, except: [:index, :show]
 
   def index
-    if current_user.standard?
-       @public_wikis = Wiki.where(private: false)
-     else
-       @public_wikis = Wiki.where(private: false)
-       @private_wikis = Wiki.where(private: true)
-       # Look at incorporating Pundit
-       # @wikis = (wikis.where(private: false)) + (current_user.wikis.where(private: true))
-       # @wikis = Wiki.all
-       # current_user.wikis.all <- all wikis belonging to the logged in user
-     end
+    @public_wikis = Wiki.where(private: false)
+    if current_user
+      @private_wikis = Wiki.where(private: true)
+      @owned_wikis = []
+      @private_wikis.each do |wiki|
+        if wiki.user_id == current_user.id
+          @owned_wikis << wiki
+        end
+      end
+    end
   end
 
   def show

@@ -17,14 +17,16 @@
  <% end %>
 
  <br>
- <% if current_user.premium? || current_user.admin? %>
-   <% @private_wikis.each do |wiki| %>
-     <div class="media col-md-6">
-       <div class="media-body">
-         <h4 class="media-heading">
-           <% if wiki.user_id == current_user.id %> PRIVATE: <%= link_to wiki.title, wiki %><% end %>
-         </h4>
+ <% if current_user  %>
+   <% if current_user.premium? || current_user.admin? %>
+    <% @owned_wikis.each do |wiki| %>
+       <div class="media col-md-6">
+         <div class="media-body">
+           <h4 class="media-heading">
+             <%= link_to wiki.title, wiki %>
+           </h4>
+         </div>
        </div>
-     </div>
+     <% end %>
    <% end %>
  <% end %>
