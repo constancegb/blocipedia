@@ -39,6 +39,9 @@ gem 'bootstrap-sass'
 # Allow the use of mardown syntax
 gem 'redcarpet'
 
+# For users authorization
+gem 'pundit'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
