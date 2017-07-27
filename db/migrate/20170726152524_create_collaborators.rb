@@ -6,5 +6,7 @@ class CreateCollaborators < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :collaborators, :user_id
+    add_index :collaborators, :wiki_id
   end
 end

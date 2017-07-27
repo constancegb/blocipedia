@@ -4,20 +4,12 @@ class WikisController < ApplicationController
   before_action :require_sign_in, except: [:index, :show]
 
   def index
-    @public_wikis = Wiki.where(private: false)
-    if current_user
-      @private_wikis = Wiki.where(private: true)
-      @owned_wikis = []
-      @private_wikis.each do |wiki|
-        if wiki.user_id == current_user.id
-          @owned_wikis << wiki
-        end
-      end
-    end
+    @wikis = policy_scope(Wiki)
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+    @collaborators = @wiki.collaborators
   end
 
   def new
@@ -43,6 +35,7 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @users = User.all
     authorize @wiki
   end
 
